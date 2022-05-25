@@ -35,6 +35,21 @@ const resolvers = {
                     }
                 }
             }
-        }
+        },
+        addBook: async (parent, args, context) => {
+            if (context.user) {
+                const favBook = await User.findByIdAndUpdate({ _id: context.user._id}, {$push: {savedBooks: args}}, {new: true});
+                return favBook 
+            } else {
+                throw new AuthenticationError('Whoops! Cant add book');
+            }
+        },
+        deleteBook: async (parent, args, context) => {
+            if (context.user) {
+                const favBook = await User.findByIdAndUpdate({ _id: context.user._id}, {$pull: {savedBooks: bookId}}, {new: true});
+                return favBook 
+            } else {
+                throw new AuthenticationError('Whoops! This will always be a favorite');
+            }
     }
 }
