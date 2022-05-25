@@ -14,6 +14,7 @@ const resolvers = {
         }
     },
     Mutation: {
+        addUser: async (parent, arg, context)
 
     }
 }

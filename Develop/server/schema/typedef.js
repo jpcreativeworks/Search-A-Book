@@ -23,7 +23,7 @@ const typeDefs = gql`
         title: String        
     }
 
-    type Q uery {
+    type Query {
         me: User
     }
 
